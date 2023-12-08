@@ -88,3 +88,4 @@ export class ApartmentLamdaStacks extends Stack {
     apartmentLambda.addEnvironment("ACMS_DB", acmsDatabase.tableName);
   }
 }
+

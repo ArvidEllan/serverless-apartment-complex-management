@@ -6,7 +6,7 @@ import UserInput from "./CreateUserInput";
 const logger = new Logger({ serviceName: "ApartmentComplexManagementApp" });
 
 exports.handler = async (
-  event: AppSyncResolverEvent<UserInput>,
+  event: AppSyncResolverEvent<{ input: UserInput }>, // Adjusted the event type
   context: Context
 ) => {
   logger.addContext(context);
@@ -16,7 +16,7 @@ exports.handler = async (
 
   switch (event.info.fieldName) {
     case "createUserAccount":
-      return await createUserAccount(event.arguments, logger);
+      return await createUserAccount(event.arguments.input, logger); // Adjusted the arguments
 
     default:
       return null;
